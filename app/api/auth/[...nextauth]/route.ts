@@ -22,17 +22,15 @@ export const authOptions: NextAuthOptions = {
   ],
   callbacks: {
     async redirect({ url, baseUrl }) {
-     
       return baseUrl; 
     },
   },
 };
 
-
 const handler = NextAuth(authOptions);
 
-
 export { handler as GET, handler as POST };
+
 
 
 //export { authOptions as GET, authOptions as POST }
