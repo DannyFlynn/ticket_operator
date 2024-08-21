@@ -1,5 +1,5 @@
 "use client";
-import { employees } from "../users/page";
+import { employees } from "@/employees";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 
