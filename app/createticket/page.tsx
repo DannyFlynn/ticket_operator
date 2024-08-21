@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { employees } from "../users/page";
+import { employees } from "@/employees";
 import { useSession } from "next-auth/react";
 
 import { zodResolver } from "@hookform/resolvers/zod";
