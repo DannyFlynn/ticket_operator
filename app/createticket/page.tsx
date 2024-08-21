@@ -47,7 +47,7 @@ const formSchema = z.object({
 
 });
 
-const page = () => {
+const CreateTicketPage = () => {
 
   const { data: session, status } = useSession();
   const router = useRouter();
@@ -142,4 +142,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default CreateTicketPage;
