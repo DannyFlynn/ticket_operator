@@ -78,7 +78,7 @@ const CreateTicketPage = () => {
     };
     //console.log(taskData)
     try {
-      const response = await fetch("http://localhost:3000/api/tickets/create", {
+      const response = await fetch("/api/tickets/create", {
         method: "POST",
         body: JSON.stringify(taskData),
       });
