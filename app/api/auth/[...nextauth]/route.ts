@@ -1,37 +1,39 @@
-import NextAuth,  { type NextAuthOptions } from "next-auth"
-import  CredentialProvider from "next-auth/providers/credentials"
+import NextAuth, { type NextAuthOptions } from "next-auth";
+import CredentialsProvider from "next-auth/providers/credentials";
 
-export const authOptions : NextAuthOptions = {
-    providers: [
-        CredentialProvider({
-          name: "Credentials",
-          credentials: {
-            username: { label: "Username", type: "text", placeholder: "jsmith" },
-            password: { label: "Password", type: "password" }
-          },
-          async authorize(credentials, req) {
-     
-            const user = { id: "1", name: "J Smith", email: "jsmith@example.com" }
-      
+// Define your auth options
+export const authOptions: NextAuthOptions = {
+  providers: [
+    CredentialsProvider({
+      name: "Credentials",
+      credentials: {
+        username: { label: "Username", type: "text", placeholder: "jsmith" },
+        password: { label: "Password", type: "password" },
+      },
+      async authorize(credentials, req) {
+        // Replace this with your user authentication logic
         if (credentials?.username === "john" && credentials.password === "password") {
-
-            return { id: "1", name: "John Doe", email: "john@example.com", admin: true };
-          } else {
-
-            return null;
-          }
-          }
-        })
-      ],
-      callbacks: {
-        async redirect({ url, baseUrl }) {
-          return "/"; 
+          return { id: "1", name: "John Doe", email: "john@example.com", admin: true };
+        } else {
+          return null; // Return null if authentication fails
         }
-      }
-}
+      },
+    }),
+  ],
+  callbacks: {
+    async redirect({ url, baseUrl }) {
+     
+      return baseUrl; 
+    },
+  },
+};
+
 
 const handler = NextAuth(authOptions);
+
+
 export { handler as GET, handler as POST };
+
 
 //export { authOptions as GET, authOptions as POST }
 
