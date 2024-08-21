@@ -52,12 +52,21 @@ const CreateTicketPage = () => {
   const { data: session, status } = useSession();
   const router = useRouter();
 
-  if(session?.user?.email !== "john@example.com"){
-    return <Unauthorized />
- }
 
   const [selectedUser, setSelectedUser] = useState(employees[0].name);
   const [deleting, setDeleting] = useState(false);
+
+
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      title: "",
+    },
+  });
+
+  if(session?.user?.email !== "john@example.com"){
+    return <Unauthorized />
+ }
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setDeleting(true);
@@ -89,12 +98,7 @@ const CreateTicketPage = () => {
     }
   }
 
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
-    defaultValues: {
-      title: "",
-    },
-  });
+  
 
   return (
     <div className="p-3 flex  justify-center items-center my-8 lg:my-26">
