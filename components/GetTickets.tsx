@@ -11,6 +11,7 @@ const URL = process.env.URL
 
 const GetTickets = ({ ticketCount }: { ticketCount: number }) => {
 
+  console.log("hello vercel")
   const [tickets, setTickets] = useState<any[]>([]);
   const [takeNum, setTakeNum] = useState(5);
   const [skipNum, setSkipNum] = useState(0);
