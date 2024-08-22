@@ -22,7 +22,7 @@ const GetTickets = ({ ticketCount }: { ticketCount: number }) => {
       const url = process.env.NEXT_PUBLIC_URL;
       try {
         const response = await fetch(
-          `/api/tickets/gettickets?take=${takeNum}&skip=${skipNum}`
+          `${url}/api/tickets/gettickets?take=${takeNum}&skip=${skipNum}`
         );
         const data = await response.json();
         setTickets(data.tickets);
