@@ -22,7 +22,7 @@ const GetTickets = ({ ticketCount }: { ticketCount: number }) => {
       const url = process.env.NEXT_PUBLIC_URL;
       try {
         const response = await fetch(
-          `${url}/api/tickets/gettickets?take=${takeNum}&skip=${skipNum}`
+          `https://dynamic-youtiao-1e6a4b.netlify.app/api/tickets/gettickets?take=${takeNum}&skip=${skipNum}`
         );
         const data = await response.json();
         setTickets(data.tickets);
